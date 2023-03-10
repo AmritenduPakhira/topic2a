@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+
+      overflow: hidden;
+      background-color: #333;
+      text-align: center;
+      padding: 25px;
+
+    }
+
+    .topnav a {
+      float: center;
+      color: #f2f2f2;
+      padding: 20px 16px;
+      text-decoration: none;
+      font-size: 30px;
+      text-transform: uppercase;
+      animation: exam linear infinite;
+      animation-duration: 3s;
+      text-transform: uppercase;
+
+    }
+
+    @keyframes exam {
+      from {
+        color: rgb(145, 255, 0);
+      }
+
+      to {
+        color: red;
+      }
+
+    }
+
+    .led {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: grey;
+      margin-left: 170px;
+    }
+
+    .led.on {
+
+      box-shadow: 0 0 10px 2px #f44336, 0 0 20px 6px #f44336
+    }
+
+    .led.off {
+      box-shadow: none;
+    }
+
+
+    .leda {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: grey;
+      margin-left: 170px;
+    }
+
+    .leda.on {
+
+      box-shadow: 0 0 10px 2px #f44336, 0 0 20px 6px #f44336
+    }
+
+    .leda.off {
+      box-shadow: none;
+    }
+
+
+    .ledb {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: grey;
+      margin-left: 170px;
+    }
+
+    .ledb.on {
+
+      box-shadow: 0 0 10px 2px #f44336, 0 0 20px 6px #f44336
+    }
+
+    .ledb.off {
+      box-shadow: none;
+    }
+
+
+    .ledd {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: grey;
+      margin-left: 170px;
+    }
+
+    .ledd.on {
+
+      box-shadow: 0 0 10px 2px #f44336, 0 0 20px 6px #f44336
+    }
+
+    .ledd.off {
+      box-shadow: none;
+    }
+
+
+    .lede {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: grey;
+      margin-left: 170px;
+    }
+
+    .lede.on {
+
+      box-shadow: 0 0 10px 2px #f44336, 0 0 20px 6px #f44336
+    }
+
+    .lede.off {
+      box-shadow: none;
+    }
+
+
+    .ledf {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: grey;
+      margin-left: 170px;
+    }
+
+    .ledf.on {
+
+      box-shadow: 0 0 10px 2px #f44336, 0 0 20px 6px #f44336
+    }
+
+    .ledf.off {
+      box-shadow: none;
+    }
+
+    
+    .ledg {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: grey;
+      margin-left: 170px;
+    }
+
+    .ledg.on {
+
+      box-shadow: 0 0 10px 2px #f44336, 0 0 20px 6px #f44336
+    }
+
+    .ledg.off {
+      box-shadow: none;
+    }
+
+    .ledh {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: grey;
+      margin-left: 170px;
+    }
+
+    .ledh.on {
+
+      box-shadow: 0 0 10px 2px #f44336, 0 0 20px 6px #f44336
+    }
+
+    .ledh.off {
+      box-shadow: none;
+    }
+
+    .ledj {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: grey;
+      margin-left: 170px;
+    }
+
+    .ledj.on {
+
+      box-shadow: 0 0 10px 2px #f44336, 0 0 20px 6px #f44336
+    }
+
+    .ledj.off {
+      box-shadow: none;
+    }
+
+    
+
+
+    .h1 {
+      color: aqua;
+    }
+
+
+    .bg img {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      z-index: -1;
+
+    }
+
+    .footer-left {
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  </style>
+
+  <script>
+    function turnOnLed() {
+      var led = document.querySelector(".led");
+      led.classList.remove("off");
+      led.classList.add("on");
+      var colorPicker = document.querySelector("#color-picker");
+      led.style.backgroundColor = colorPicker.value;
+    }
+
+    function turnOffLed() {
+      var led = document.querySelector(".led");
+      led.classList.remove("on");
+      led.classList.add("off");
+      led.style.backgroundColor = "gray";
+    }
+
+    function changeLedColor() {
+      var led = document.querySelector(".led");
+      var colorPicker = document.querySelector("#color-picker");
+      if (led.classList.contains('on')) {
+        led.style.backgroundColor = colorPicker.value;
+      } else {
+        console.error("LED is currently in off mode. Please turn it on to change the color.");
+        alert("LED is currently in off mode. Please turn it on to change the color.");
+        //led.style.backgroundColor = colorPicker.value;
+      }
+    }
+
+    function turnOnLeda() {
+      var led = document.querySelector(".leda");
+      led.classList.remove("off");
+      led.classList.add("on");
+      var colorPicker = document.querySelector("#color-picke");
+      led.style.backgroundColor = colorPicker.value;
+    }
+
+    function turnOffLeda() {
+      var led = document.querySelector(".leda");
+      led.classList.remove("on");
+      led.classList.add("off");
+      led.style.backgroundColor = "gray";
+    }
+
+    function changeLedColora() {
+      var led = document.querySelector(".leda");
+      var colorPicker = document.querySelector("#color-picke");
+      if (led.classList.contains('on')) {
+        led.style.backgroundColor = colorPicker.value;
+      } else {
+        console.error("LED is currently in off mode. Please turn it on to change the color.");
+        alert("LED is currently in off mode. Please turn it on to change the color.");
+        //led.style.backgroundColor = colorPicker.value;
+      }
+    }
+
+    function turnOnLedab() {
+      var led = document.querySelector(".ledb");
+      led.classList.remove("off");
+      led.classList.add("on");
+      var colorPicker = document.querySelector("#color-pickerab");
+      led.style.backgroundColor = colorPicker.value;
+    }
+
+    function turnOffLedab() {
+      var led = document.querySelector(".ledb");
+      led.classList.remove("on");
+      led.classList.add("off");
+      led.style.backgroundColor = "gray";
+    }
+
+    function changeLedColorab() {
+      var led = document.querySelector(".ledb");
+      var colorPicker = document.querySelector("#color-pickerab");
+      if (led.classList.contains('on')) {
+        led.style.backgroundColor = colorPicker.value;
+      } else {
+        console.error("LED is currently in off mode. Please turn it on to change the color.");
+        alert("LED is currently in off mode. Please turn it on to change the color.");
+        //led.style.backgroundColor = colorPicker.value;
+      }
+    }
+
+    function turnOnLedd() {
+      var led = document.querySelector(".ledd");
+      led.classList.remove("off");
+      led.classList.add("on");
+      var colorPicker = document.querySelector("#color-pickerd");
+      led.style.backgroundColor = colorPicker.value;
+    }
+
+    function turnOffLedd() {
+      var led = document.querySelector(".ledd");
+      led.classList.remove("on");
+      led.classList.add("off");
+      led.style.backgroundColor = "gray";
+    }
+
+    function changeLedColord() {
+      var led = document.querySelector(".ledd");
+      var colorPicker = document.querySelector("#color-pickerd");
+      if (led.classList.contains('on')) {
+        led.style.backgroundColor = colorPicker.value;
+      } else {
+        console.error("LED is currently in off mode. Please turn it on to change the color.");
+        alert("LED is currently in off mode. Please turn it on to change the color.");
+        //led.style.backgroundColor = colorPicker.value;
+      }
+    }
+
+    function turnOnLede() {
+      var led = document.querySelector(".lede");
+      led.classList.remove("off");
+      led.classList.add("on");
+      var colorPicker = document.querySelector("#color-pickere");
+      led.style.backgroundColor = colorPicker.value;
+    }
+
+    function turnOffLede() {
+      var led = document.querySelector(".lede");
+      led.classList.remove("on");
+      led.classList.add("off");
+      led.style.backgroundColor = "gray";
+    }
+
+    function changeLedColore() {
+      var led = document.querySelector(".lede");
+      var colorPicker = document.querySelector("#color-pickere");
+      if (led.classList.contains('on')) {
+        led.style.backgroundColor = colorPicker.value;
+      } else {
+        console.error("LED is currently in off mode. Please turn it on to change the color.");
+        alert("LED is currently in off mode. Please turn it on to change the color.");
+        //led.style.backgroundColor = colorPicker.value;
+      }
+    }
+
+    
+      function turnOnLedf() {
+        var led = document.querySelector(".ledf");
+        led.classList.remove("off");
+        led.classList.add("on");
+        var colorPicker = document.querySelector("#color-pickerf");
+        led.style.backgroundColor = colorPicker.value;
+      }
+
+      function turnOffLedf() {
+        var led = document.querySelector(".ledf");
+        led.classList.remove("on");
+        led.classList.add("off");
+        led.style.backgroundColor = "gray";
+      }
+
+      function changeLedColorf() {
+        var led = document.querySelector(".ledf");
+        var colorPicker = document.querySelector("#color-pickerf");
+        if (led.classList.contains('on')) {
+          led.style.backgroundColor = colorPicker.value;
+        } else {
+          console.error("LED is currently in off mode. Please turn it on to change the color.");
+          alert("LED is currently in off mode. Please turn it on to change the color.");
+          //led.style.backgroundColor = colorPicker.value;
+        }
+      
+        
+      }
+
+        
+      function turnOnLedg() {
+        var led = document.querySelector(".ledg");
+        led.classList.remove("off");
+        led.classList.add("on");
+        var colorPicker = document.querySelector("#color-pickg");
+        led.style.backgroundColor = colorPicker.value;
+      }
+
+      function turnOffLedg() {
+        var led = document.querySelector(".ledg");
+        led.classList.remove("on");
+        led.classList.add("off");
+        led.style.backgroundColor = "gray";
+      }
+
+      function changeLedColorg() {
+        var led = document.querySelector(".ledg");
+        var colorPicker = document.querySelector("#color-pickg");
+        if (led.classList.contains('on')) {
+          led.style.backgroundColor = colorPicker.value;
+        } else {
+          console.error("LED is currently in off mode. Please turn it on to change the color.");
+          alert("LED is currently in off mode. Please turn it on to change the color.");
+          //led.style.backgroundColor = colorPicker.value;
+        }
+   
+      }
+
+      function turnOnLedh() {
+        var led = document.querySelector(".ledh");
+        led.classList.remove("off");
+        led.classList.add("on");
+        var colorPicker = document.querySelector("#color-pickerh");
+        led.style.backgroundColor = colorPicker.value;
+      }
+
+      function turnOffLedh() {
+        var led = document.querySelector(".ledh");
+        led.classList.remove("on");
+        led.classList.add("off");
+        led.style.backgroundColor = "gray";
+      }
+
+      function changeLedColorh() {
+        var led = document.querySelector(".ledh");
+        var colorPicker = document.querySelector("#color-pickerh");
+        if (led.classList.contains('on')) {
+          led.style.backgroundColor = colorPicker.value;
+        } else {
+          console.error("LED is currently in off mode. Please turn it on to change the color.");
+          alert("LED is currently in off mode. Please turn it on to change the color.");
+          //led.style.backgroundColor = colorPicker.value;
+        }
+   
+      }
+
+      function turnOnLedj() {
+        var led = document.querySelector(".ledj");
+        led.classList.remove("off");
+        led.classList.add("on");
+        var colorPicker = document.querySelector("#color-pickerj");
+        led.style.backgroundColor = colorPicker.value;
+      }
+
+      function turnOffLedj() {
+        var led = document.querySelector(".ledj");
+        led.classList.remove("on");
+        led.classList.add("off");
+        led.style.backgroundColor = "gray";
+      }
+
+      function changeLedColorj() {
+        var led = document.querySelector(".ledj");
+        var colorPicker = document.querySelector("#color-pickerj");
+        if (led.classList.contains('on')) {
+          led.style.backgroundColor = colorPicker.value;
+        } else {
+          console.error("LED is currently in off mode. Please turn it on to change the color.");
+          alert("LED is currently in off mode. Please turn it on to change the color.");
+          //led.style.backgroundColor = colorPicker.value;
+        }
+   
+      }
+
+
+     
+
+
+      document.querySelector("#color-picker").addEventListener("change", function () {
+        changeLedColor();
+      });
+
+      document.querySelector("#color-picke").addEventListener("change", function () {
+        changeLedColor();
+      });
+      document.querySelector("#color-pick").addEventListener("change", function () {
+        changeLedColor();
+      });
+
+      document.querySelector("#color-pickerj").addEventListener("change", function () {
+        changeLedColor();
+      });
+      document.querySelector("#color-pickerh").addEventListener("change", function () {
+        changeLedColor();
+      });
+      document.querySelector("#color-pickerg").addEventListener("change", function () {
+        changeLedColor();
+      });
+      document.querySelector("#color-pickere").addEventListener("change", function () {
+        changeLedColor();
+      });
+      document.querySelector("#color-pickerf").addEventListener("change", function () {
+        changeLedColor();
+      });
+      document.querySelector("#color-pickerab").addEventListener("change", function () {
+        changeLedColor();
+      });
+     
+      document.querySelector("#color-pickerd").addEventListener("change", function () {
+        changeLedColor();
+      });
+
+
+
+  </script>
+
+</head>
+
+<body>
+<header>
+  <div class="topnav fixed-top">
+    <a class="active" href="#home">Shedding Light on Smart Home </a>
+
+  </div>
+</header>
+
+  <div class="bg">
+    <img src="ab.png" alt="background image">
+  </div>
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="led-container">
+          <div class="h1">
+            <p> <strong> Dining Room </strong> </p>
+          </div>
+          <div class="led"></div>
+          <input type="color" id="color-picker" onchange="changeLedColor()" value="#ff0000">
+          <button type="button" class="btn btn-primary" onclick="turnOffLed()">OFF</button>
+          <button type="button" class="btn btn-success" onclick="turnOnLed()">ON</button>
+
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="led-contain">
+          <div class="h1">
+            <p> <strong> Bed Room </strong> </p>
+          </div>
+          <div class="leda"></div>
+          <input type="color" id="color-picke" onchange="changeLedColora()" value="#ff0000">
+          <button type="button" class="btn btn-primary" onclick="turnOffLeda()">OFF</button>
+          <button type="button" class="btn btn-success" onclick="turnOnLeda()">ON</button>
+
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="led-contain">
+          <div class="h1">
+            <p> <strong> Study Room </strong> </p>
+          </div>
+          <div class="ledb"></div>
+          <input type="color" id="color-pickerab" onchange="changeLedColorab()" value="#ff0000">
+          <button type="button" class="btn btn-primary" onclick="turnOffLedab()">OFF</button>
+          <button type="button" class="btn btn-success" onclick="turnOnLedab()">ON</button>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+  </div>
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="led-container">
+          <div class="h1">
+            <p> <strong> Smart Speaker </strong> </p>
+          </div>
+          <div class="ledd"></div>
+          <input type="color" id="color-pickerd" onchange="changeLedColord()" value="#ff0000">
+          <button type="button" class="btn btn-primary" onclick="turnOffLedd()">OFF</button>
+          <button type="button" class="btn btn-success" onclick="turnOnLedd()">ON</button>
+
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="led-contain">
+          <div class="h1">
+            <p> <strong> Laundry Room </strong> </p>
+          </div>
+          <div class="lede"></div>
+          <input type="color" id="color-pickere" onchange="changeLedColore()" value="#ff0000">
+          <button type="button" class="btn btn-primary" onclick="turnOffLede()">OFF</button>
+          <button type="button" class="btn btn-success" onclick="turnOnLede()">ON</button>
+
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="led-contain">
+          <div class="h1">
+            <p> <strong> Basement </strong> </p>
+          </div>
+          <div class="ledf"></div>
+          <input type="color" id="color-pickerf" onchange="changeLedColorf()" value="#ff0000">
+          <button type="button" class="btn btn-primary" onclick="turnOffLedf()">OFF</button>
+          <button type="button" class="btn btn-success" onclick="turnOnLedf()">ON</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br><br>
+  
+
+  </div>
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="led-container">
+          <div class="h1">
+            <p> <strong> Sports Room </strong> </p>
+          </div>
+          <div class="ledg"></div>
+          <input type="color" id="color-pickerg" onchange="changeLedColorg()" value="#ff0000">
+          <button type="button" class="btn btn-primary" onclick="turnOffLedg()">OFF</button>
+          <button type="button" class="btn btn-success" onclick="turnOnLedg()">ON</button>
+
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="led-contain">
+          <div class="h1">
+            <p> <strong> Kitchen </strong> </p>
+          </div>
+          <div class="ledh"></div>
+          <input type="color" id="color-pickerh" onchange="changeLedColorh()" value="#ff0000">
+          <button type="button" class="btn btn-primary" onclick="turnOffLedh()">OFF</button>
+          <button type="button" class="btn btn-success" onclick="turnOnLedh()">ON</button>
+
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="led-contain">
+          <div class="h1">
+            <p> <strong> Living Room </strong> </p>
+          </div>
+          <div class="ledj"></div>
+          <input type="color" id="color-pickerj" onchange="changeLedColorj()" value="#ff0000">
+          <button type="button" class="btn btn-primary" onclick="turnOffLedj()">OFF</button>
+          <button type="button" class="btn btn-success" onclick="turnOnLedj()">ON</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-5" style="background: black; margin-top: 20px;">
+    <div class="container" id="contains">
+      <div class="row">
+        <div class="col-md-4">
+          <h4 style="color: #fff;">Amritendu Pakhira</h4>
+          <p style="color: #fff;">Contact us:</p>
+          <ul class="list-unstyled">
+            <li style="color: #fff;">Pingla, Paschim Medinipur</li>
+            <li style="color: #fff;">Khargapur, Kolkata, 721140</li>
+            <li style="color: #fff;">Phone: (91) 8900564054</li>
+            <li style="color: #fff;">Email: pakhiraamritendu@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4 style="color: #fff;">Our Materials</h4>
+          <ul class="list-unstyled">
+            <li style="color: #fff;">HTML</li>
+            <li style="color: #fff;">CSS</li>
+            <li style="color: #fff;">Bootstrap</li>
+            <li style="color: #fff;">JavaScript</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4 style="color: #fff;">Follow Us</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" style="color: #fff;"><i class="fab fa-facebook"></i> Facebook</a></li>
+            <li><a href="#" style="color: #fff;"><i class="fab fa-twitter"></i> Twitter</a></li>
+            <li><a href="#" style="color: #fff;"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="#" style="color: #fff;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+
+</body>
+
+</html>
